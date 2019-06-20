@@ -1,0 +1,69 @@
+---
+title: "quiz"
+author: "최준혁"
+date: '2019 6 20 '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<br><br>
+##1번
+```{r}
+cat('2, 4번')
+```
+<br><br>
+## 2번
+```{r }
+n<-10
+p<-4/5
+( dbinom(7, size=n, prob=p))
+```
+<br><br>
+## 3번
+```{r}
+n<-20
+p<-1/20
+pbinom(2, size=n, prob = p)
+```
+<br><br>
+## 4번
+```{r}
+n<-20
+p<-1/5
+x<-0:n
+pbinom(2, size=n, prob = p)
+```
+<br><br>
+## 5번
+```{r}
+(5/36)*100
+```
+<br><br>
+# 정규분포
+## 1번
+```{r}
+pnorm(750, mean=800, sd=40)
+```
+<br><br>
+## 2번
+```{r}
+(1- pnorm(20, mean=11, sd=4))
+```
+<br><br>
+## 3번
+```{r}
+mu <- 70
+sigma <- 8
+pnorm(90, mean=mu, sd=sigma)-pnorm(80, mean=mu, sd=sigma)
+```
+<br><br>
+## 4번
+```{r}
+mu <- 1.5
+sigma <- 2
+H0<-pnorm(1, mean=mu, sd=sigma)-pnorm(0, mean=mu, sd=sigma)
+H2<-pnorm(3, mean=mu, sd=sigma)-pnorm(2, mean=mu, sd=sigma)
+H0+H2
+```
