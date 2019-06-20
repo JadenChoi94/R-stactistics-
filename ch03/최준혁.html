@@ -397,18 +397,20 @@ pbinom(2, size=n, prob = p)</code></pre>
 <p><br><br> ## 4번</p>
 <pre class="r"><code>n&lt;-20
 p&lt;-1/5
-x&lt;-0:n
 pbinom(2, size=n, prob = p)</code></pre>
 <pre><code>## [1] 0.2060847</code></pre>
 <p><br><br> ## 5번</p>
-<pre class="r"><code>(5/36)*100</code></pre>
-<pre><code>## [1] 13.88889</code></pre>
+<pre class="r"><code>(5/36)</code></pre>
+<pre><code>## [1] 0.1388889</code></pre>
 <p><br><br> # 정규분포 ## 1번</p>
 <pre class="r"><code>pnorm(750, mean=800, sd=40)</code></pre>
 <pre><code>## [1] 0.1056498</code></pre>
 <p><br><br> ## 2번</p>
 <pre class="r"><code>(1- pnorm(20, mean=11, sd=4))</code></pre>
 <pre><code>## [1] 0.01222447</code></pre>
+<pre class="r"><code>#2-2
+qnorm(0.1, mean=11, sd=4)</code></pre>
+<pre><code>## [1] 5.873794</code></pre>
 <p><br><br> ## 3번</p>
 <pre class="r"><code>mu &lt;- 70
 sigma &lt;- 8

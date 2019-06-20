@@ -21,7 +21,6 @@ pbinom(2, size=n, prob = p)
 #4
 n<-20
 p<-1/5
-x<-0:n
 pbinom(2, size=n, prob = p)
 
 #5
@@ -31,9 +30,10 @@ pbinom(2, size=n, prob = p)
 #1
 pnorm(750, mean=800, sd=40)
 
-#2
+#2-1
 (1- pnorm(20, mean=11, sd=4))
-
+#2-2
+qnorm(0.1, mean=11, sd=4)
 
 #3
 mu <- 70
