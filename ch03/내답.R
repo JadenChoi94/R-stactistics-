@@ -21,7 +21,7 @@ pbinom(2, size=n, prob = p)
 #4
 n<-20
 p<-1/5
-pbinom(2, size=n, prob = p)
+1-pbinom(1, size=n, prob = p)
 
 #5
 5/36
@@ -33,7 +33,7 @@ pnorm(750, mean=800, sd=40)
 #2-1
 (1- pnorm(20, mean=11, sd=4))
 #2-2
-qnorm(0.1, mean=11, sd=4)
+qnorm(0.9, mean=11, sd=4)
 
 #3
 mu <- 70
@@ -43,6 +43,6 @@ pnorm(90, mean=mu, sd=sigma)-pnorm(80, mean=mu, sd=sigma)
 #4
 mu <- 1.5
 sigma <- 2
-H0<-pnorm(1, mean=mu, sd=sigma)-pnorm(0, mean=mu, sd=sigma)
-H2<-pnorm(3, mean=mu, sd=sigma)-pnorm(2, mean=mu, sd=sigma)
-H0+H2
+H<-pnorm(1, mean=mu, sd=sigma)-pnorm(0, mean=mu, sd=sigma)
+2*H
+
