@@ -1,4 +1,16 @@
-# Chi-squared distribution
+---
+title: "Assignment9"
+author: "최준혁"
+date: '2019 6 22 '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<br><br>
+## Chi-squared distribution
+```{r }
 set.seed(9)
 n<-1000
 df<-3
@@ -47,9 +59,10 @@ y4<-dnorm( x=x4, mean=3, sd=s/sqrt(64))
 lines(x4, y4, lty=2, lwd=2, col='blue')
 
 mtext("Chi-squared Distribution", side = 3, line = -1, outer = TRUE)
-
-#===============================================================
-# t-distribution
+```
+<br><br>
+## t-distribution
+```{r}
 n<-1000
 t.2.mean<-rep(NA, n)
 t.8.mean<-rep(NA, n)
@@ -94,8 +107,10 @@ y4<-dnorm( x=x4, mean(t.64.mean), sd(t.64.mean))
 lines(x4, y4, lty=2, lwd=2, col='blue')
 
 mtext("t-Distribution", side = 3, line = -1, outer = TRUE)
-#=================================================================
-# F-distribution
+```
+<br><br>
+## F-distribution
+```{r}
 n<-1000
 f.8.mean<-rep(NA, n)
 f.16.mean<-rep(NA, n)
@@ -113,7 +128,7 @@ c(mean(f.16.mean), sd(f.16.mean))
 c(mean(f.64.mean), sd(f.64.mean))
 c(mean(f.256.mean), sd(f.256.mean))
 
-par(mfrow=c(2,2), oma=c(1,1,2,1), mar=c(2, 2, 2, 2))
+par(mfrow=c(2,2), oma=c(1,1,2,1),  mar=c(2, 2, 2, 2))
 hist(f.8.mean, prob=T, ylab="", xlab="", main="표본 크기 : 8", 
      col="orange", border="red")
 x1<-seq(min(f.8.mean), max(f.8.mean), length=1000)
@@ -139,4 +154,5 @@ y4<-dnorm( x=x4, mean(f.256.mean), sd(f.256.mean))
 lines(x4, y4, lty=2, lwd=2, col='blue')
 
 mtext("F-Distribution", side = 3, line = -1, outer = TRUE)
+```
 
