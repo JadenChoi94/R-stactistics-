@@ -20,7 +20,7 @@ l.c <- rep(NA, length(x))
 l.c <- ifelse(ll * ul > 0, "red", "black")
 arrows(1:length(x), ll, 1:length(x), ul, code=3, angle=90, length=0.02, col=l.c, lwd=1.5)
 
-#qt(0.025, 4)
+qt(0.025, 4)
 qt(0.025, 9)
 #예제5-5. 모평균 95% 신뢰구간(모분산을 모를  때); T 분포
 ci.t <- function(x, alpha=0.05) {

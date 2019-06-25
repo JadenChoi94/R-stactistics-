@@ -1,3 +1,5 @@
+#6장. rktjfrjawjd
+#6-1.
 setwd('D:/Workspace/R-statistics/ch06')
 data <- read.csv('2016.6th.csv', header=T)
 str(data)
@@ -14,4 +16,8 @@ sd(height)
 sqrt( length(height) )
 (mean(height) - mu0) / (sd(height) / sqrt(length(height)))
 
-pt(0.727, 14)
+(1230-1220)/(45.75/sqrt(15))#검정통계량 대신
+
+t.test(height, mu=1220)#이렇게! 간단
+#===========================================================
+
