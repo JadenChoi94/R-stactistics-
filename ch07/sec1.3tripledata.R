@@ -2,7 +2,7 @@
 
 setwd("D:/Workspace/R-statistics/ch07")
 ad <- read.csv("age.data.csv", header=T)
-str(a
+str(ad)
 
 y1.mean <- mean( y1 )
 y2.mean <- mean( y2 )
@@ -15,7 +15,7 @@ sse.3 <- sum( (y3 - y3.mean)^2 )
 (sse <- sse.1 + sse.2 + sse.3)
 (dfe <- (length(y1)-1) + (length(y2)-1) + (length(y3)-1))
 
-y.mean <- mean(ad$age)#분자
+y <- mean(ad$age)#분자
 
 sst.1 <- length(y1) * sum((y1.mean - y)^2)
 sst.2 <- length(y2) * sum((y2.mean - y)^2)
