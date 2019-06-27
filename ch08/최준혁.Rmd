@@ -1,8 +1,18 @@
-#2-Sample T 테스트
+---
+title: "Assignment11"
+author: "최준혁"
+date: '2019 6 27 '
+output: html_document
+---
 
-# 1번.mtcars 데이터셋에서 자동차 기어 종류(am: 오토/수동)에 따른 mpg의 차이가 통계적으로 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<br>
+## 2-Sample T 테스트
+```{r}
+# 1.mtcars 데이터셋에서 자동차 기어 종류(am: 오토/수동)에 따른 mpg의 차이가 통계적으로 
 #유의한지 t-test를 통해 확인해 보시오.
-View(mtcars)
 shapiro.test(mtcars$mpg[mtcars$am==1])
 shapiro.test(mtcars$mpg[mtcars$am==0])#정규성을 나타낸다
 sd(mtcars$mpg[mtcars$am==1])
@@ -10,12 +20,14 @@ sd(mtcars$mpg[mtcars$am==0])
 var.test(mtcars$mpg~mtcars$am)#분산이 동일하다.
 t.test(mtcars$mpg~mtcars$am, var.equal=TRUE)
 
-cat('자동차 기어 종류에 따른 mpg의 차이가 통계적으로 유의한지 알아보기 위해 표본 추출을 
+print('자동차 기어 종류에 따른 mpg의 차이가 통계적으로 유의한지 알아보기 위해 표본 추출을 
 통해 auto:13, manual:19 항목의 mpg를 측정한 결과 manual의 mpg는 17.14737 +- 6.166504,
 auto의 mpg는 24.39231 +- 3.833966으로 나타났습니다. 이를 유의수준 0.05에서 가설검정
 하면 검정통계량과 유의 확률이 -4.1061(p-value = 0.000285)으로 나타나 두 기어종류의 mpg의 
 차이가 통계적으로 유의하지 않은 것으로 판단됩니다.')
-
+```
+<br>
+```{r}
 # 2. MASS 패키지에 내장된 Cars93 데이터프레임에 대해서 생산국(Origin)이 USA vs. non-USA 
 # 2개의 group 에 대해서 차 가격(Price)의 평균이 차이가 있는지를검정해보시오.
 library(MASS)
@@ -26,15 +38,15 @@ sd(Cars93$Price[Cars93$Origin=="USA"])
 var.test(Cars93$Price~Cars93$Origin)#분산이 동일하지 않다.
 t.test(Price ~ Origin, data=Cars93, var.equal=FALSE)
 
-cat('생산국에 따른 가격의 평균 차이가 있는지 알아보기 위해 표본 추출을 통해 USA:48,
+print('생산국에 따른 가격의 평균 차이가 있는지 알아보기 위해 표본 추출을 통해 USA:48,
 NON-USA:45 항목의 가격을 조사한 결과 USA의 Price는 18.57292 +- 7.816914, Non-USA의
 Price는 20.50889 +- 11.30675로 나타났습니다. 이를 유의수준 0.05에서 가설검정 하면
 검정통계량과 유의 확률이 -0.96555(p-value = 0.3368)으로 나타나 두 표본의 평균의 차이가
 있으며, non-USA제품이 USA 제품보다 평균 가격이 크다는 것으로 판단됩니다.')
-
-
-#3. mpg 데이터셋에서 다음을 검정해 보시오.
-View(mpg)
+```
+<br>
+## mpg 데이터셋에서 다음을 검정해 보시오.
+```{r}
 library(dplyr)
 library(ggplot2)
 #1) subcompact 자동차와 midsize 자동차의 고속도로 연비
@@ -47,12 +59,14 @@ data1 <- mpg %>%
 var.test(data1$hwy~data1$class)#분산이 다르다.
 t.test(data1$hwy~data1$class, var.equal = FALSE)
 
-cat('subcompact와 midsize 종류에 따른 hwy의 차이가 통계적으로 유의한지 알아보기 위해
+print('subcompact와 midsize 종류에 따른 hwy의 차이가 통계적으로 유의한지 알아보기 위해
 표본 추출을 통해 subcompact:35, midsize:41 항목의 hwy를 측정한 결과 subcompact의 hwy는
 28.14286 +- 5.375012, midsize의 hwy는 27.29268 +- 2.13593으로 나타났습니다. 이를 
 유의수준 0.05에서 가설검정 하면 검정통계량과 유의 확률이0.93116(p-value = 0.3548)으로
 나타나 두 기어종류의 hwy의 차이가 통계적으로 유의한 것으로 판단됩니다.')
-
+```
+<br>
+```{r}
 #2) 일반 휘발유(r)와 고급 휘발유(p)의 도시 연비
 shapiro.test(mpg$cty[mpg$fl=="r"])
 shapiro.test(mpg$cty[mpg$fl=="p"])#정규성을 띄지않는다.
@@ -63,11 +77,14 @@ data2 <- mpg %>%
 var.test(data2$cty~data2$fl)#분산이 다르다.
 t.test(data2$cty~data2$fl, var.equal=FALSE)
 
-cat('r과 p종류에 따른 cwy의 차이가 통계적으로 유의한지 알아보기 위해 표본 추출을
+print('r과 p종류에 따른 cwy의 차이가 통계적으로 유의한지 알아보기 위해 표본 추출을
 통해 r:168, p:52 항목의 cty를 측정한 결과 r의 cty는 16.73810 +- 3.88801, r은
 17.36538 +- 3.042373으로 나타났습니다. 이를 유의수준 0.05 에서 가설검정 하면
 검정통계량과 유의 확률이 -1.0662(p-value = 0.2875)으로 나타나 두 휘발류의 cty의
 차이가 통계적으로 유의한 것으로 판단됩니다.')
+```
+<br>
+```{r}
 #3) subcompact 자동차의 전륜구동(f)이냐 후륜구동(r)이냐에 따른 도시 연비
 data3 <- mpg %>%
   filter(class=="subcompact" & drv %in% c("f","r"))
@@ -82,9 +99,10 @@ print('표본 추출을 통해 r:9, f:22 항목의 cty를 측정한 결과 r의 
 +- 4.520277으로 나타났습니다. 이를 유의수준 0.05에서 가설검정 하면 검정통계량과 유의
 확률이 --4.1727(p-value = 0.0002498)으로 나타나 두 구동 방식의 cty의 차이가 통계적으로
     유의한 것으로 판단됩니다.')
-
-# Paired sample T 테스트
-
+```
+<br>
+## Paired sample T 테스트
+```{r}
 # 1. 새로운 당뇨병 치료제를 개발한 제약사에서는 치료에 지대한 영향을 주는 외부요인을
 # 통제하기 위해 10명의 당뇨병 환자를 선별하여 1달 동안 '위약(placebo)'을 투여한 기간의
 # 혈당 수치(Xi)와 '신약(new medicine)'을 투여한 1달 기간 동안의 혈당 수치(Yi)를 측정하여
@@ -99,7 +117,9 @@ t.test(placebo,new_medicine, paired=T)
 print('결과적으로 혈당수치가 평균 0.64 감소 하였으며, 표준 편차는 +- 0.5699903으로 나타났습니다. 또한 유의
 수준 0.05에서 검정 통계량은 3.5507(p-value = 0.006209)로 나타나 신약의 효과가 있다는 통계
 적으로 유의한 결과를 얻을 수 있었습니다.')
-    
+```
+<br>
+```{r}
 #2 . 두 종류의 신발 밑창의 원재료가 닳는 정도가 차이가 있는지를 검정하기 위해서 10명의 
 # 소년에게 한쪽은 A라는 원재료로 만든 신발을 신기고, 다른 한쪽은 B라는 원재료로 만든 신발
 # 을 신긴 후에, 일정 기간이 지난후에 신발을 수거하여 10명의 각 소년의 왼쪽 신발 밑창의 닳은
@@ -111,12 +131,12 @@ materialB <- c(14.0,8.8,11.2,14.2,11.8,6.4,9.8,11.3,9.3,13.6)
 sd(materialA-materialB)
 t.test(materialA,materialB, paired=T)
 
-print('두 원재료의 차이를 측정한 결과 평균 닳기의 차이가 0.41 이며, 표준 편차는 +- 0.3871549로 나타났습니다.
-또한 유의수준 0.05에서 검정 통계량은 -3.3489(p-value = 0.008539)로 나타나 재질에 차이가 있다는 통계적으로 유의한
+print('두 원재료의 차이를 측정한 결과 평균 닳기의 차이가 0.41 이며, 표준 편차는 +- 0.3871549로 나타났습니다. 또한 유의수준 0.05에서 검정 통계량은 -3.3489(p-value = 0.008539)로 나타나 재질에 차이가 있다는 통계적으로 유의한
 결과를 얻을 수 있었습니다.')
-
-# 일원 분산분석(One way ANOVA)
-
+```
+<br>
+## 일원 분산분석(One way ANOVA)
+```{r}
 #1. 다음은 3개 호수의 산소량의 차이가 있는지 없는지 알아보기 위하여 각 호수에서 10곳을 선택하여 수심 1m의
 #   물로부터 산소량(ppm)을 측정한 자료이다. 3개 호수의 산소량이 같다고 할 수 있는가?
 
@@ -132,7 +152,9 @@ ow <- lm(ppm~hosoo, data=hosoo_df)
 anova(ow)
 oneway.test(ppm~hosoo, data=hosoo_df, var.equal=TRUE)
 #p-value = 2.411e-10 이므로 유의확률이 너무 작기 때문에 3개 호수의 산소량은 같다고 할 수 없다.
-
+```
+<br>
+```{r}
 #2. 다음은 3개 채소에 대한 도매시장 7곳의 가격이다. 3개 채소의 가격이 같다고 할 수 있는가?
 vegi1<-c(15.5, 14.3, 16.3, 13.5, 15.7, 16.4, 14.7)
 vegi2<-c(14.7, 16.3, 15.5, 15.2, 16.3, 13.5, 15.4)
@@ -146,9 +168,10 @@ ow <- lm(price~chaeso, data=chaeso_df)
 anova(ow)
 oneway.test(price~chaeso, data=chaeso_df, var.equal=TRUE)
 #p-value = 0.9824 이므로, 채소의 가격은 같다고 할 수 있다. 
-
-#적합도/독립성 검정
-
+```
+<br>
+## 적합도/독립성 검정
+```{r}
 #3. 어느 공정의 부적합품률은 15% 이다. 시료 80개를 추출하여 검사한 결과 불량이 16개이다.
 #   유의수준 5%로 적합도 검정을 하시오.
 #양품:64, 불량: 16
@@ -157,7 +180,9 @@ x <- c(64, 16)
 chisq.test(x, p=c(68, 12)/80)
 
 #p-value = 0.2104 이므로, 부적합품률은 15% 을 따른다고 할 수 있다.
-
+```
+<br>
+```{r}
 #4. 다음은 음주량과 흡연량 데이터이다. 이 표로부터 음주량과 흡연량 사이에 연관이 있는지 확인하시오.
 row1<-c(23, 21, 63)
 row2<-c(31, 48, 159)
@@ -170,3 +195,4 @@ addmargins(data)
 chisq.test(data)
 #P-value가 0.01215 로서 유의수준 α 0.05보다 작으므로 귀무가설 H0를 기각하여 "음주량과 흡연량 간에는
 # 서로 관련성이 있다. 즉, 독립적이지 않다"고 판단할 수 있겠습니다.
+```
