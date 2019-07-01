@@ -30,6 +30,7 @@ g<-mtcars %>%
   select(disp, hp)
 reg_g<-lm(g$hp~g$disp)
 reg_g
+#hp.hat=45.7345+0.4375*disp
 
 #4. MASS 패키지를 설치하고, 이 패키지 안에 있는 Boston 데이터셋을 이용하여 Boston 인근의
 #   집값을 결정하는 다중회귀 모델을 만드시오.
@@ -52,5 +53,8 @@ library(MASS)
 boston_house<-lm(medv~., data=Boston)
 step(boston_house, direction='both')
 library(leaps)
-housing<-regsubsets(medv~., data=Boston, method='seqrep', nbest=2)
+housing<-regsubsets(medv~., data=Boston, method='seqrep', nbest=13)
 summary(housing)
+plot(housing)
+
+
